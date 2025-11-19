@@ -1,43 +1,52 @@
 import './Home.css'
 
-function Home() {
+type Page = 'home' | 'books'
+
+interface HomeProps {
+  onNavigate: (page: Page) => void
+}
+
+function Home({ onNavigate }: HomeProps) {
   return (
     <div className="home">
       <section className="hero">
-        <h2>Welcome to Our Book Club</h2>
+        <h2>Bienvenido a Nuestro Club de Lectura</h2>
         <p className="hero-text">
-          This is a place where we share our thoughts, reflections, and ideas that emerge 
-          from our book club sessions. Join us on this journey of knowledge and discovery.
+          Este es un espacio donde compartimos nuestros pensamientos, reflexiones e ideas que surgen 
+          de nuestras sesiones del club de lectura. Únete a nosotros en este viaje de conocimiento y descubrimiento.
         </p>
+        <button className="cta-button" onClick={() => onNavigate('books')}>
+          Explora Nuestros Libros
+        </button>
       </section>
 
       <section className="features">
         <div className="feature-card">
-          <h3>📚 Book Discussions</h3>
-          <p>Deep dives into the books we read together, exploring themes, characters, and ideas.</p>
+          <h3>📚 Discusiones de Libros</h3>
+          <p>Análisis profundos de los libros que leemos juntos, explorando temas, personajes e ideas.</p>
         </div>
         
         <div className="feature-card">
-          <h3>💭 Reflections</h3>
-          <p>Personal insights and thoughts from our members about what we've learned.</p>
+          <h3>💭 Reflexiones</h3>
+          <p>Perspectivas personales y pensamientos de nuestros miembros sobre lo que hemos aprendido.</p>
         </div>
         
         <div className="feature-card">
-          <h3>🌟 Community</h3>
-          <p>A space for friends to connect, share, and grow together through literature.</p>
+          <h3>🌟 Comunidad</h3>
+          <p>Un espacio para que amigos se conecten, compartan y crezcan juntos a través de la literatura.</p>
         </div>
       </section>
 
       <section className="about">
-        <h2>About This Project</h2>
+        <h2>Acerca de Este Proyecto</h2>
         <p>
-          This website started as a simple static site to document our book club journey. 
-          It may evolve into a more dynamic platform with cloud integration and database 
-          functionality as our community grows.
+          Este sitio web comenzó como un sitio estático simple para documentar nuestro viaje del club de lectura. 
+          Puede evolucionar hacia una plataforma más dinámica con integración en la nube y funcionalidad 
+          de base de datos a medida que nuestra comunidad crezca.
         </p>
         <p>
-          Built with HTML, CSS, React, and TypeScript - designed to be simple, 
-          accessible, and easy to maintain.
+          Construido con HTML, CSS, React y TypeScript - diseñado para ser simple, 
+          accesible y fácil de mantener.
         </p>
       </section>
     </div>

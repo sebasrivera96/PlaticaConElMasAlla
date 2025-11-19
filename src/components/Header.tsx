@@ -1,17 +1,36 @@
 import './Header.css'
 
-function Header() {
+type Page = 'home' | 'books'
+
+interface HeaderProps {
+  currentPage: Page
+  onNavigate: (page: Page) => void
+}
+
+function Header({ currentPage, onNavigate }: HeaderProps) {
   return (
     <header className="header">
       <div className="header-content">
         <h1 className="site-title">Platica Con El Mas Alla</h1>
-        <p className="site-subtitle">A time capsule for sharing knowledge and reflections</p>
+        <p className="site-subtitle">Una cápsula del tiempo para compartir conocimiento y reflexiones</p>
         <nav className="nav">
           <ul className="nav-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#reflections">Reflections</a></li>
-            <li><a href="#books">Books</a></li>
+            <li>
+              <button 
+                className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
+                onClick={() => onNavigate('home')}
+              >
+                Inicio
+              </button>
+            </li>
+            <li>
+              <button 
+                className={`nav-link ${currentPage === 'books' ? 'active' : ''}`}
+                onClick={() => onNavigate('books')}
+              >
+                Libros
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
